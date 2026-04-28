@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Andi Pratama",
+    "email": "andi.pratama@example.com",
+    "address": "Jl. Merdeka No. 10, Jakarta Pusat"
+  },
+  {
+    "name": "Siti Rahayu",
+    "email": "siti.rahayu@example.com",
+    "address": "Jl. Sudirman No. 25, Bandung"
+  },
+  {
+    "name": "Budi Santoso",
+    "email": "budi.santoso@example.com",
+    "address": "Jl. Pahlawan No. 8, Surabaya"
+  },
+  {
+    "name": "Dewi Lestari",
+    "email": "dewi.lestari@example.com",
+    "address": "Jl. Kenanga No. 15, Yogyakarta"
+  },
+  {
+    "name": "Rudi Hermawan",
+    "email": "rudi.hermawan@example.com",
+    "address": "Jl. Mawar No. 33, Semarang"
+  },
+  {
+    "name": "Maya Anggraini",
+    "email": "maya.anggraini@example.com",
+    "address": "Jl. Melati No. 7, Medan"
+  },
+  {
+    "name": "Fajar Nugroho",
+    "email": "fajar.nugroho@example.com",
+    "address": "Jl. Gatot Subroto No. 42, Makassar"
+  },
+  {
+    "name": "Rina Kusuma",
+    "email": "rina.kusuma@example.com",
+    "address": "Jl. Diponegoro No. 19, Denpasar"
+  },
+  {
+    "name": "Hendra Wijaya",
+    "email": "hendra.wijaya@example.com",
+    "address": "Jl. Ahmad Yani No. 5, Palembang"
+  },
+  {
+    "name": "Nisa Fitriani",
+    "email": "nisa.fitriani@example.com",
+    "address": "Jl. Imam Bonjol No. 28, Malang"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "skill": "JavaScript",
+    "level": "Advanced",
+    "category": "Programming"
+  },
+  {
+    "skill": "Python",
+    "level": "Intermediate",
+    "category": "Programming"
+  },
+  {
+    "skill": "React.js",
+    "level": "Expert",
+    "category": "Frontend Framework"
+  },
+  {
+    "skill": "SQL",
+    "level": "Intermediate",
+    "category": "Database"
+  },
+  {
+    "skill": "Git & GitHub",
+    "level": "Advanced",
+    "category": "Version Control"
+  },
+  {
+    "skill": "UI/UX Design",
+    "level": "Beginner",
+    "category": "Design"
+  },
+  {
+    "skill": "Docker",
+    "level": "Intermediate",
+    "category": "DevOps"
+  },
+  {
+    "skill": "Data Analysis",
+    "level": "Advanced",
+    "category": "Data Science"
+  },
+  {
+    "skill": "Project Management",
+    "level": "Intermediate",
+    "category": "Management"
+  },
+  {
+    "skill": "Technical Writing",
+    "level": "Expert",
+    "category": "Documentation"
+  }
+]

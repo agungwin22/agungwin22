@@ -1,0 +1,72 @@
+[
+  {
+    "title": "E-Commerce Platform",
+    "description": "Platform toko online lengkap dengan fitur keranjang, pembayaran, dan dashboard admin.",
+    "technologies": ["React.js", "Node.js", "MongoDB", "Stripe"],
+    "status": "Completed",
+    "url": "https://github.com/example/ecommerce-platform"
+  },
+  {
+    "title": "Task Management App",
+    "description": "Aplikasi pelacakan tugas kolaboratif dengan pembaruan real-time dan ruang kerja tim.",
+    "technologies": ["Vue.js", "Firebase", "Tailwind CSS"],
+    "status": "In Progress",
+    "url": "https://github.com/example/task-manager"
+  },
+  {
+    "title": "Data Visualization Dashboard",
+    "description": "Dashboard interaktif untuk analisis penjualan dan pelaporan metrik pelanggan.",
+    "technologies": ["Python", "Pandas", "Plotly", "Flask"],
+    "status": "Completed",
+    "url": "https://github.com/example/data-dashboard"
+  },
+  {
+    "title": "RESTful API Service",
+    "description": "Backend API skalabel untuk autentikasi pengguna dan manajemen resource.",
+    "technologies": ["Express.js", "PostgreSQL", "Docker", "JWT"],
+    "status": "Completed",
+    "url": "https://github.com/example/rest-api-service"
+  },
+  {
+    "title": "Mobile Fitness Tracker",
+    "description": "Aplikasi lintas platform untuk mencatat latihan, melacak progres, dan menetapkan target.",
+    "technologies": ["React Native", "Firebase", "Redux"],
+    "status": "Maintenance",
+    "url": "https://github.com/example/fitness-tracker"
+  },
+  {
+    "title": "AI Customer Support Chatbot",
+    "description": "Chatbot berbasis NLP yang terintegrasi dengan CRM untuk resolusi tiket otomatis.",
+    "technologies": ["Python", "TensorFlow", "FastAPI", "Docker"],
+    "status": "Completed",
+    "url": "https://github.com/example/ai-chatbot"
+  },
+  {
+    "title": "Company Portfolio Website",
+    "description": "Website perusahaan responsif yang menampilkan layanan, tim, dan formulir kontak.",
+    "technologies": ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
+    "status": "Completed",
+    "url": "https://example.com/portfolio-site"
+  },
+  {
+    "title": "Inventory Management System",
+    "description": "Sistem manajemen stok untuk melacak persediaan, pemasok, dan peringatan otomatis.",
+    "technologies": ["Java", "Spring Boot", "MySQL", "Thymeleaf"],
+    "status": "Completed",
+    "url": "https://github.com/example/inventory-system"
+  },
+  {
+    "title": "Real-time Weather App",
+    "description": "Aplikasi prakiraan cuaca berbasis lokasi dengan UI dinamis dan tampilan per jam/harian.",
+    "technologies": ["React", "OpenWeather API", "Redux", "CSS Modules"],
+    "status": "Completed",
+    "url": "https://github.com/example/weather-app"
+  },
+  {
+    "title": "Blog CMS Platform",
+    "description": "Sistem manajemen konten dengan dukungan markdown, alat SEO, dan kontrol akses berbasis peran.",
+    "technologies": ["Next.js", "Prisma", "PostgreSQL", "MDX"],
+    "status": "In Progress",
+    "url": "https://github.com/example/blog-cms"
+  }
+]
