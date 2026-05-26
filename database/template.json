@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": 1,
+        "category": "Landing Page",
+        "title": "Coffee Shop Landing Page",
+        "description": "Landing Page Coffee Shop Premium sangat cocok untuk pemilik bisnis coffe shop, dll.",
+        "fitur": ["Responsive","Fitur Product List"],
+        "demo": "https://coffee-shopid.netlify.app/",
+        "beli": "https://projects.co.id/public/browse_products/view/e3e111/template-landing-page-coffee-shop-premium"
+    }
+]
