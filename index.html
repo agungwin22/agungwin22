@@ -1,104 +1,493 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgungWin22 - Frontend Developer & Template Maker</title>
-    <link rel="icon" type="image/svg+xml" href="assets/icon/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fontsource.org/inter/400.css" rel="stylesheet">
-    <link href="https://fontsource.org/inter/500.css" rel="stylesheet">
-    <link href="https://fontsource.org/inter/600.css" rel="stylesheet">
-    <link href="https://fontsource.org/inter/700.css" rel="stylesheet">
-    <!-- style -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/variables.css">
+    <title>AgungWin22 — Fullstack Web Developer & Template Maker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/index.min.css">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #0a0a0f; color: #e5e7eb; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 4px; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(79, 70, 229, 0.6); }
+        }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fadeIn { animation: fadeIn 1s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-glow { animation: glow 2s ease-in-out infinite; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #818cf8, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero overlay */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.75) 50%, rgba(10,10,15,0.92) 100%);
+        }
+
+        /* Glass card */
+        .glass {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Skill badge hover */
+        .skill-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99,102,241,0.25);
+        }
+
+        /* Card hover */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Reveal animation class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar blur */
+        .nav-blur {
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        /* Button primary */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99,102,241,0.4);
+        }
+
+        /* Button outline */
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: #6366f1;
+            background: rgba(99,102,241,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Template card image */
+        .template-img {
+            transition: transform 0.5s ease;
+        }
+        .template-card:hover .template-img {
+            transform: scale(1.05);
+        }
+
+        /* WhatsApp pulse */
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+        }
+        .wa-pulse {
+            animation: pulse-green 2s infinite;
+        }
+    </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">AgungWin22</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="https://agungwin22.netlify.app">Home</a></li>
-                <li><a href="https://agungwin22.netlify.app/projects">Projects</a></li>
-                <li><a href="https://agungwin22.netlify.app/api">API</a></li>
-                <li><a href="https://agungwin22.netlify.app#about">About</a></li>
-                <li><a href="https://agungwin22.netlify.app#templates">Templates</a></li>
-                <li><a href="https://agungwin22.netlify.app#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 nav-blur border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="text-xl font-bold">
+                <span class="gradient-text">AgungWin22</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
+                <a href="#about" class="hover:text-white transition-colors">Tentang</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-white transition-colors">Project</a>
+                <a href="#services" class="hover:text-white transition-colors">Layanan</a>
+                <a href="#templates" class="hover:text-white transition-colors">Template</a>
+                <a href="#contact" class="hover:text-white transition-colors">Kontak</a>
+            </div>
+            <a href="#contact" class="btn-primary hidden md:inline-block text-white px-5 py-2 rounded-full text-sm font-medium">
+                Hire Me
+            </a>
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
             </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3">
+            <a href="#about" class="block text-gray-400 hover:text-white py-2">Tentang</a>
+            <a href="#skills" class="block text-gray-400 hover:text-white py-2">Skills</a>
+            <a href="#projects" class="block text-gray-400 hover:text-white py-2">Project</a>
+            <a href="#services" class="block text-gray-400 hover:text-white py-2">Layanan</a>
+            <a href="#templates" class="block text-gray-400 hover:text-white py-2">Template</a>
+            <a href="#contact" class="block text-gray-400 hover:text-white py-2">Kontak</a>
+            <a href="#contact" class="btn-primary inline-block text-white px-5 py-2 rounded-full text-sm font-medium mt-2">Hire Me</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <span class="hero-badge">🚀 Frontend Developer & Template Maker</span>
-            <h1>Membuat <span class="gradient-text">Website Modern</span> untuk Masa Depan Digital</h1>
-            <p>Spesialis dalam pengembangan frontend dan pembuatan template website berkualitas tinggi. Temukan template premium saya di marketplace.</p>
-            <div class="hero-buttons">
-                <a href="https://agungwin22.netlify.app/template" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    Lihat Templates
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="image/hero.png" alt="" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-gray-300 mb-8 animate-fadeInUp opacity-0" style="animation-fill-mode: forwards;">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                Tersedia untuk project baru
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 animate-fadeInUp opacity-0 delay-200" style="animation-fill-mode: forwards;">
+                Fullstack Web Developer<br>
+                <span class="gradient-text">& Template Maker</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 animate-fadeInUp opacity-0 delay-300" style="animation-fill-mode: forwards;">
+                Bantu bisnis kamu hadir di internet — dari landing page sampai web app custom.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeInUp opacity-0 delay-400" style="animation-fill-mode: forwards;">
+                <a href="#services" class="btn-primary text-white px-8 py-4 rounded-full font-medium text-base w-full sm:w-auto text-center">
+                    Lihat Layanan →
                 </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                    Hubungi Saya
+                <a href="#templates" class="btn-outline text-white px-8 py-4 rounded-full font-medium text-base w-full sm:w-auto text-center">
+                    Browse Template
                 </a>
             </div>
+            <div class="mt-16 flex items-center justify-center gap-8 text-gray-500 text-sm animate-fadeIn opacity-0 delay-500" style="animation-fill-mode: forwards;">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    30+ Project Selesai
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    20+ Template Premium
+                </div>
+                <div class="hidden sm:flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    5 Tahun Pengalaman
+                </div>
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section-container">
-            <div class="about-grid">
-                <div class="about-image fade-in">
-                    <div class="about-image-card">
-                        <h3 style="margin-bottom: 1rem;">Tech Stack</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <!-- <span class="skill-tag">React</span> -->
-                            <!-- <span class="skill-tag">Vue.js</span> -->
-                            <!-- <span class="skill-tag">Tailwind CSS</span> -->
-                            <!-- <span class="skill-tag">Next.js</span> -->
-                            <!-- <span class="skill-tag">TypeScript</span> -->
-                            <!-- <span class="skill-tag">Web3</span> -->
-                            <span class="skill-tag">Responsive Design</span>
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl opacity-20 blur-2xl"></div>
+                        <img src="image/my-foto.jpg" alt="AgungWin22" class="relative rounded-2xl w-full object-cover shadow-2xl">
+                    </div>
+                </div>
+                <div class="reveal delay-200">
+                    <p class="text-indigo-400 font-medium mb-3 tracking-wide">TENTANG SAYA</p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Halo, saya <span class="gradient-text">Agung</span> 👋</h2>
+                    <div class="space-y-4 text-gray-400 leading-relaxed">
+                        <p>
+                            Saya mulai ngoding sejak SMA karena penasaran bisa bikin website dari nol. Sekarang, saya udah bantu puluhan UMKM, startup, dan agensi untuk membangun presença digital mereka — dari yang sederhana sampai yang kompleks.
+                        </p>
+                        <p>
+                            Selain ngoding buat klien, saya juga jualan template website siap pakai. Tujuannya satu: bikin teknologi web lebih accessible — baik buat yang mau pakai jasa custom, maupun yang mau bangun sendiri lebih cepat.
+                        </p>
+                        <p>
+                            Saya percaya kerjaan yang bagus itu yang <strong class="text-white">beres di deadline, komunikatif, dan hasilnya bikin klien bangga</strong>. Yuk, kita ngobrol!
+                        </p>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <div class="glass px-4 py-2 rounded-full text-sm text-gray-300"> Indonesia</div>
+                        <div class="glass px-4 py-2 rounded-full text-sm text-gray-300">⚡ Remote Friendly</div>
+                        <div class="glass px-4 py-2 rounded-full text-sm text-gray-300">🕐 Response < 2 jam</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills / Stack Section -->
+    <section id="skills" class="py-24 px-6 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-400 font-medium mb-3 tracking-wide">TECH STACK</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Tools yang Saya <span class="gradient-text">Kuasai</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Stack modern yang saya pakai untuk build project yang scalable, cepat, dan maintainable.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 reveal delay-200">
+                <!-- HTML -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">🌐</div>
+                    <h3 class="font-semibold text-white mb-1">HTML5</h3>
+                    <p class="text-xs text-gray-500">Semantic & Accessible</p>
+                </div>
+                <!-- CSS -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">🎨</div>
+                    <h3 class="font-semibold text-white mb-1">CSS3</h3>
+                    <p class="text-xs text-gray-500">Animations & Layouts</p>
+                </div>
+                <!-- Tailwind -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">🌊</div>
+                    <h3 class="font-semibold text-white mb-1">Tailwind CSS</h3>
+                    <p class="text-xs text-gray-500">Utility-first Styling</p>
+                </div>
+                <!-- JavaScript -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">⚡</div>
+                    <h3 class="font-semibold text-white mb-1">JavaScript</h3>
+                    <p class="text-xs text-gray-500">ES6+ & Modern JS</p>
+                </div>
+                <!-- Node.js -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">🟢</div>
+                    <h3 class="font-semibold text-white mb-1">Node.js</h3>
+                    <p class="text-xs text-gray-500">Backend Runtime</p>
+                </div>
+                <!-- Express -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">🚂</div>
+                    <h3 class="font-semibold text-white mb-1">Express.js</h3>
+                    <p class="text-xs text-gray-500">REST API & Server</p>
+                </div>
+                <!-- Supabase -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">⚡</div>
+                    <h3 class="font-semibold text-white mb-1">Supabase</h3>
+                    <p class="text-xs text-gray-500">Database & Auth</p>
+                </div>
+                <!-- AI Integration -->
+                <div class="skill-badge glass rounded-2xl p-6 text-center transition-all duration-300 cursor-pointer">
+                    <div class="text-4xl mb-3">🤖</div>
+                    <h3 class="font-semibold text-white mb-1">AI Integration</h3>
+                    <p class="text-xs text-gray-500">OpenAI & LLM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-400 font-medium mb-3 tracking-wide">PORTFOLIO</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Project <span class="gradient-text">Terbaik</span> Saya</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Beberapa project yang udah saya kerjakan — mulai dari aplikasi custom sampai template siap pakai.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1: BukuLedger -->
+                <div class="card-hover glass rounded-2xl overflow-hidden reveal">
+                    <div class="overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/2fa0bf68-b535-43da-9636-fc18545430db/17b4011f8-4946-4d09-b35d-d500dd9634eb.png" alt="BukuLedger" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Web App</span>
+                            <span class="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">FinTech</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">BukuLedger</h3>
+                        <p class="text-gray-400 text-sm mb-5">Aplikasi pencatatan keuangan untuk UMKM dengan dashboard interaktif, laporan otomatis, dan integrasi Supabase.</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 text-center btn-primary text-white py-2.5 rounded-xl text-sm font-medium">Live Demo</a>
+                            <a href="#" class="flex-1 text-center btn-outline text-white py-2.5 rounded-xl text-sm font-medium">Source Code</a>
                         </div>
                     </div>
                 </div>
-                <div class="about-content fade-in">
-                    <h3>Tentang Saya</h3>
-                    <p>Halo! Saya adalah seorang Frontend Developer dengan passion dalam menciptakan pengalaman web yang modern dan user-friendly. Sebagai Template Maker, saya telah membantu ratusan developer dan bisnis untuk memiliki website profesional dengan cepat.</p>
-                    <p>Setiap template yang saya buat dirancang dengan perhatian khusus pada detail, performa, dan kemudahan kustomisasi. Saya percaya bahwa website yang baik harus tidak hanya terlihat bagus, tetapi juga berfungsi dengan sempurna di semua perangkat.</p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">10+</div>
-                            <div class="stat-label">Templates Sold</div>
+
+                <!-- Project 2: Template Demo -->
+                <div class="card-hover glass rounded-2xl overflow-hidden reveal delay-200">
+                    <div class="overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/2fa0bf68-b535-43da-9636-fc18545430db/1167617cf-8143-405e-bc57-1d778cc9b0cc.png" alt="Template E-Commerce" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Template</span>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">E-Commerce</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1+</div>
-                            <div class="stat-label">Years Experience</div>
+                        <h3 class="text-xl font-bold text-white mb-2">ShopEase Template</h3>
+                        <p class="text-gray-400 text-sm mb-5">Template toko online modern dengan sistem cart, checkout, dan admin dashboard. Siap deploy dalam 1 hari.</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 text-center btn-primary text-white py-2.5 rounded-xl text-sm font-medium">Live Demo</a>
+                            <a href="#" class="flex-1 text-center btn-outline text-white py-2.5 rounded-xl text-sm font-medium">Source Code</a>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">20+</div>
-                            <div class="stat-label">Happy Clients</div>
+                    </div>
+                </div>
+
+                <!-- Project 3: SaaS Landing -->
+                <div class="card-hover glass rounded-2xl overflow-hidden reveal delay-400">
+                    <div class="overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/2fa0bf68-b535-43da-9636-fc18545430db/10e8f31bb-8842-4596-90f4-d564a691eedd.png" alt="SaaS Template" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Template</span>
+                            <span class="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">SaaS</span>
                         </div>
+                        <h3 class="text-xl font-bold text-white mb-2">LaunchKit SaaS</h3>
+                        <p class="text-gray-400 text-sm mb-5">Template landing page untuk startup SaaS dengan pricing section, testimonial, dan dark mode support.</p>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 text-center btn-primary text-white py-2.5 rounded-xl text-sm font-medium">Live Demo</a>
+                            <a href="#" class="flex-1 text-center btn-outline text-white py-2.5 rounded-xl text-sm font-medium">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-400 font-medium mb-3 tracking-wide">LAYANAN FREELANCE</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Pilih Paket yang <span class="gradient-text">Cocok</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Tiga paket layanan untuk kebutuhan bisnis yang berbeda-beda. Semua termasuk konsultasi gratis.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Package 1: Landing Page -->
+                <div class="card-hover glass rounded-2xl p-8 reveal relative">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl"></div>
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-2xl mb-6">🎯</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Landing Page</h3>
+                        <p class="text-gray-400 text-sm mb-6">Cocok untuk bisnis yang butuh kehadiran online cepat dan konversi tinggi.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-white">Rp 1,5jt</span>
+                            <span class="text-gray-500 text-sm">/ project</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Desain responsif modern
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                SEO basic optimization
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Deploy + domain setup
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                1x revisi minor
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn-outline block text-center text-white py-3 rounded-xl font-medium">Konsultasi Dulu</a>
+                    </div>
+                </div>
+
+                <!-- Package 2: Web App Custom (Featured) -->
+                <div class="card-hover rounded-2xl p-8 reveal delay-200 relative border-2 border-indigo-500 bg-gradient-to-b from-indigo-950/50 to-transparent">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">PALING POPULER</div>
+                    <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-2xl mb-6">⚙️</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Web App Custom</h3>
+                    <p class="text-gray-400 text-sm mb-6">Untuk bisnis yang butuh sistem khusus — dashboard, CRUD, automasi, dll.</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-white">Rp 5jt+</span>
+                        <span class="text-gray-500 text-sm">/ project</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Full-stack development
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            Database & authentication
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            AI integration (opsional)
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            3x revisi + maintenance 1 bulan
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary block text-center text-white py-3 rounded-xl font-medium">Mulai Project</a>
+                </div>
+
+                <!-- Package 3: Konsultasi / Revamp -->
+                <div class="card-hover glass rounded-2xl p-8 reveal delay-400 relative">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl"></div>
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-2xl mb-6">🔧</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Konsultasi / Revamp</h3>
+                        <p class="text-gray-400 text-sm mb-6">Website lama butuh di-upgrade atau butuh saran teknis? Saya bantu.</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-white">Rp 500rb</span>
+                            <span class="text-gray-500 text-sm">/ sesi</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Audit performa & SEO
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Rekomendasi tech stack
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Video call 1 jam
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Dokumen rekomendasi
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn-outline block text-center text-white py-3 rounded-xl font-medium">Booking Sesi</a>
                     </div>
                 </div>
             </div>
@@ -106,223 +495,252 @@
     </section>
 
     <!-- Templates Section -->
-    <section class="templates" id="templates">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Template Premium</h2>
-                <p>Koleksi template website berkualitas tinggi yang siap digunakan untuk berbagai kebutuhan bisnis Anda</p>
+    <section id="templates" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-indigo-400 font-medium mb-3 tracking-wide">TEMPLATE PREMIUM</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Beli Template, <span class="gradient-text">Hemat Waktu</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Template website siap pakai yang bisa kamu customize sendiri. Sekali beli, pakai selamanya.</p>
             </div>
-            <div class="templates-grid">
-                <!-- Template Card 1 -->
-                <div class="template-card fade-in">
-                    <img src="images/coffee.png" alt="Dashboard Template" class="template-image">
-                    <div class="template-content">
-                        <span class="template-category">Landing Page</span>
-                        <h3 class="template-title">Coffee Shop Landing Page</h3>
-                        <p class="template-description">Landing Page Coffee Shop Premium sangat cocok untuk pemilik bisnis coffe shop, dll.</p>
-                        <div class="template-features">
-                            <span class="feature-tag">Responsive</span>
-                            <span class="feature-tag">Fitur Product list</span>
-                            <!-- <span class="feature-tag">Charts</span> -->
-                            <!-- <span class="feature-tag">React Ready</span> -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Template 1 -->
+                <div class="template-card card-hover glass rounded-2xl overflow-hidden reveal">
+                    <div class="overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/2fa0bf68-b535-43da-9636-fc18545430db/1167617cf-8143-405e-bc57-1d778cc9b0cc.png" alt="ShopEase" class="template-img w-full h-52 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full">E-Commerce</span>
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                4.9
+                            </div>
                         </div>
-                        <div class="template-actions">
-                            <a href="https://coffee-shopid.netlify.app/" class="btn btn-demo">Demo</a>
-                            <a href="https://projects.co.id/public/browse_products/view/e3e111/template-landing-page-coffee-shop-premium" class="btn btn-buy">Beli</a>
+                        <h3 class="text-xl font-bold text-white mb-1">ShopEase</h3>
+                        <p class="text-gray-400 text-sm mb-5">Template toko online dengan fitur cart, checkout, dan admin panel. Cocok untuk UMKM fashion.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-white">Rp 499rb</span>
+                            </div>
+                            <a href="#" class="btn-primary text-white px-5 py-2.5 rounded-xl text-sm font-medium">Beli Sekarang</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Template Card 2 -->
-                <div class="template-card fade-in">
-                    <img src="images/klinik.png" alt="E-commerce Template" class="template-image">
-                    <div class="template-content">
-                        <span class="template-category">Landing Page</span>
-                        <h3 class="template-title">Aesthetica Clinic</h3>
-                        <p class="template-description">Premium Beuty Clinic Landing Page Template</p>
-                        <div class="template-features">
-                            <span class="feature-tag">Design Profesional & Modern</span>
-                            <span class="feature-tag">Fully Responsive</span>
-                            <span class="feature-tag">Ready to use Section</span>
-                            <!-- <span class="feature-tag">Mobile First</span> -->
+                <!-- Template 2 -->
+                <div class="template-card card-hover glass rounded-2xl overflow-hidden reveal delay-200">
+                    <div class="overflow-hidden">
+                        <img src="https://image.qwenlm.ai/public_source/2fa0bf68-b535-43da-9636-fc18545430db/10e8f31bb-8842-4596-90f4-d564a691eedd.png" alt="LaunchKit" class="template-img w-full h-52 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full">SaaS</span>
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                5.0
+                            </div>
                         </div>
-                        <div class="template-actions">
-                            <a href="https://klinikcantik.netlify.app/" class="btn btn-demo">Demo</a>
-                            <a href="https://projects.co.id/public/browse_products/view/0ee111/template-website-klinik-cantik-premium" class="btn btn-buy">Beli</a>
+                        <h3 class="text-xl font-bold text-white mb-1">LaunchKit</h3>
+                        <p class="text-gray-400 text-sm mb-5">Landing page modern untuk startup SaaS. Dark mode, pricing table, dan testimonial section.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-white">Rp 399rb</span>
+                            </div>
+                            <a href="#" class="btn-primary text-white px-5 py-2.5 rounded-xl text-sm font-medium">Beli Sekarang</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Template Card 3 -->
-                <div class="template-card fade-in">
-                    <img src="images/localboost.png" alt="Landing Page Template" class="template-image">
-                    <div class="template-content">
-                        <span class="template-category">Landing Page</span>
-                        <h3 class="template-title">LocalBoost Landing Page</h3>
-                        <p class="template-description">Premium Local Business Landing Page Template</p>
-                        <div class="template-features">
-                            <span class="feature-tag">Desain Responsive</span>
-                            <span class="feature-tag">Animations Scroll</span>
-                            <span class="feature-tag">SEO Optimized</span>
-                            <span class="feature-tag">Fast Loading</span>
+                <!-- Template 3 -->
+                <div class="template-card card-hover glass rounded-2xl overflow-hidden reveal delay-400">
+                    <div class="overflow-hidden bg-gradient-to-br from-indigo-900/50 to-purple-900/50 flex items-center justify-center h-52">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2"></div>
+                            <p class="text-white font-semibold">Portfolio Pro</p>
                         </div>
-                        <div class="template-actions">
-                            <a href="https://localboostid.netlify.app/" class="btn btn-demo">Demo</a>
-                            <a href="#" class="btn btn-buy">Beli</a>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full">Portfolio</span>
+                            <div class="flex items-center gap-1 text-yellow-400 text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                4.8
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">Portfolio Pro</h3>
+                        <p class="text-gray-400 text-sm mb-5">Template portfolio untuk developer & designer. Animasi smooth, blog section, CMS ready.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-white">Rp 299rb</span>
+                            </div>
+                            <a href="#" class="btn-primary text-white px-5 py-2.5 rounded-xl text-sm font-medium">Beli Sekarang</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://agungwin22.gumroad.com/" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                    Lihat Semua Template
-                </a>
+            <div class="text-center mt-12 reveal">
+                <p class="text-gray-500 text-sm">Lihat semua template di</p>
+                <div class="flex items-center justify-center gap-4 mt-3">
+                    <a href="#" class="btn-outline px-6 py-3 rounded-full text-sm font-medium text-white">🛒 Gumroad</a>
+                    <a href="#" class="btn-outline px-6 py-3 rounded-full text-sm font-medium text-white">🏪 Projects.co.id</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Hubungi Saya</h2>
-                <p>Punya pertanyaan atau ingin custom template? Jangan ragu untuk menghubungi saya via WhatsApp</p>
+    <section id="contact" class="py-24 px-6 bg-gradient-to-b from-transparent via-indigo-950/10 to-transparent">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="reveal">
+                <p class="text-indigo-400 font-medium mb-3 tracking-wide">HUBUNGI SAYA</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Mari <span class="gradient-text">Ngobrol</span> tentang Project Kamu</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-12">Punya ide, pertanyaan, atau mau mulai project? Klik tombol di bawah — saya biasanya response dalam 2 jam.</p>
             </div>
-            <div class="contact-container fade-in">
-                <div class="contact-card">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" id="name" name="name" placeholder="Nama Anda" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="email@anda.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Pesan</label>
-                            <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                            </svg>
-                            Kirim via WhatsApp
-                        </button>
-                    </form>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                            </svg>
-                            <span>+62 823 2231 6366</span>
-                        </div>
-                        <div class="contact-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            <span>agunguchiha54@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span>Demak, Jawa Tengah, Indonesia</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section class="templates" id="templates">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <h2>Project</h2>
-                <p>Koleksi Projects website yang siap digunakan</p>
+            <div class="grid sm:grid-cols-3 gap-4 reveal delay-200">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/6281234567890" target="_blank" class="glass rounded-2xl p-6 card-hover group text-center block">
+                    <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform wa-pulse">
+                        💬
+                    </div>
+                    <h3 class="font-bold text-white mb-1">WhatsApp</h3>
+                    <p class="text-gray-400 text-sm">+62 812-3456-7890</p>
+                    <p class="text-green-400 text-xs mt-2">Fast Response ⚡</p>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:hello@agungwin22.dev" class="glass rounded-2xl p-6 card-hover group text-center block">
+                    <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        ✉️
+                    </div>
+                    <h3 class="font-bold text-white mb-1">Email</h3>
+                    <p class="text-gray-400 text-sm">hello@agungwin22.dev</p>
+                    <p class="text-indigo-400 text-xs mt-2">Untuk proposal formal</p>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/agungwin22" target="_blank" class="glass rounded-2xl p-6 card-hover group text-center block">
+                    <div class="w-14 h-14 bg-gray-500/20 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        🐙
+                    </div>
+                    <h3 class="font-bold text-white mb-1">GitHub</h3>
+                    <p class="text-gray-400 text-sm">@agungwin22</p>
+                    <p class="text-gray-400 text-xs mt-2">Lihat source code</p>
+                </a>
             </div>
-            <div class="templates-grid">
-                <!-- projects Card 1 -->
-                <div class="template-card fade-in">
-                    <img src="projects/assets/img/moneyflow.png" alt="Dashboard Template" class="template-image">
-                    <div class="template-content">
-                        <span class="template-category">Dashboard Application (Single Page App berbasis CRUD)</span>
-                        <h3 class="template-title">BukuLedger – Personal Accounting</h3>
-                        <p class="template-description">BukuLedger – Personal Accounting adalah aplikasi web pencatatan keuangan pribadi yang membantu pengguna memantau pemasukan dan pengeluaran secara real-time. Dirancang dengan antarmuka modern dark theme yang responsif, MoneyFlow memungkinkan pengguna menambah, mengedit, menghapus, serta mengimpor/ekspor data transaksi dalam format CSV. Semua data tersimpan di localStorage browser sehingga cepat dan tanpa perlu koneksi internet.</p>
-                        <div class="template-features">
-                            <span class="feature-tag">📊 Manajemen Transaksi CRUD (Create, Read, Update, Delete)</span>
-                            <span class="feature-tag">📁 Impor & Ekspor Data CSV</span>
-                            <span class="feature-tag">🔐 Login Pengguna (Simulasi)</span>
-                            <!-- <span class="feature-tag">React Ready</span> -->
+
+            <!-- Quick Contact Form -->
+            <div class="mt-16 glass rounded-2xl p-8 reveal delay-400">
+                <h3 class="text-2xl font-bold text-white mb-6">Atau kirim pesan langsung 👇</h3>
+                <form id="contactForm" class="space-y-4 text-left">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">Nama</label>
+                            <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Nama kamu">
                         </div>
-                        <div class="template-actions">
-                            <a href="https://app-bukuledger.netlify.app/" class="btn btn-demo">Visit Site</a>
-                            <a href="https://github.com/agungwin22/moneyflow" class="btn btn-buy">Source Code</a>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-2">Email / WA</label>
+                            <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Email atau nomor WA">
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://agungwin22.netlify.app/projects" class="btn btn-primary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                    Lihat Semua Projects
-                </a>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Jenis Kebutuhan</label>
+                        <select class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                            <option value="" class="bg-gray-900">Pilih salah satu...</option>
+                            <option value="landing" class="bg-gray-900">Landing Page</option>
+                            <option value="webapp" class="bg-gray-900">Web App Custom</option>
+                            <option value="konsultasi" class="bg-gray-900">Konsultasi / Revamp</option>
+                            <option value="template" class="bg-gray-900">Beli Template</option>
+                            <option value="lainnya" class="bg-gray-900">Lainnya</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Pesan</label>
+                        <textarea required rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-colors resize-none" placeholder="Ceritakan project kamu..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-medium text-base">
+                        Kirim Pesan 🚀
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">AgungWin22</div>
-            <ul class="footer-links">
-                <li><a href="https://agungwin22.netlify.app">Home</a></li>
-                <li><a href="https://agungwin22.netlify.app#about">About</a></li>
-                <li><a href="https://agungwin22.netlify.app#templates">Templates</a></li>
-                <li><a href="https://agungwin22.netlify.app#contact">Contact</a></li>
-            </ul>
-            <div class="social-links">
-                <a href="#" class="social-link" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <a href="#" class="social-link" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                </a>
-                <a href="#" class="social-link" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
+    <footer class="py-8 px-6 border-t border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-center md:text-left">
+                <p class="text-lg font-bold gradient-text">AgungWin22</p>
+                <p class="text-gray-500 text-sm">Fullstack Web Developer & Template Maker</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2026 AgungWin22. All rights reserved.</p>
+            <div class="text-center md:text-right">
+                <p class="text-gray-500 text-sm">© 2024 AgungWin22. Built with ❤️ di Indonesia.</p>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Pesan Terkirim!';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                contactForm.reset();
+            }, 3000);
+        });
+
+        // Skill badge hover sound effect (visual feedback only)
+        document.querySelectorAll('.skill-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', () => {
+                badge.style.borderColor = 'rgba(99,102,241,0.5)';
+            });
+            badge.addEventListener('mouseleave', () => {
+                badge.style.borderColor = '';
+            });
+        });
+    </script>
 </body>
 </html>
-
